@@ -17,7 +17,7 @@ class Grid extends Component {
     render() {
         return (
             <div>
-                
+                {this.state.items}
             </div>
         );
     }

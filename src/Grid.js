@@ -14,10 +14,13 @@ class Grid extends Component {
             })
         }
     }
+    renderItems = () => {
+        return this.state.items;
+    }
     render() {
         return (
             <div>
-                {this.state.items}
+                {this.renderItems()}
             </div>
         );
     }

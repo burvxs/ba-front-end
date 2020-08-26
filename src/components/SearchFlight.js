@@ -12,6 +12,7 @@ class SearchFlight extends Component {
     handleSearch = (e) => {
         e.preventDefault();
         this.fetchFlights();
+
     }
     renderFlightData = () => {
         let flightArr = []

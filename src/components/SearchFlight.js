@@ -65,7 +65,7 @@ class SearchFlight extends Component {
             if (response.data.no_result){
                 this.setState({ flightData: response.data.fail_text });
             }else{
-                  if (Array.isArray(response.data.flight_data)) {
+                if (Array.isArray(response.data.flight_data)) {
                   this.setState({
                     flightData: response.data.flight_data
                   });

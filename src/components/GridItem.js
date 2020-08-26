@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class GridItem extends Component {
     state = {
         gridItemColor : 'grey',
-        gridBorderColor : 'white'
+        gridBorderColor : '1px solid white'
     }
     /*
         This method will be called when each grid item 
@@ -17,11 +17,11 @@ class GridItem extends Component {
     setGridItemValues = () => {
         if (this.props.isReserved){
             this.setState({
-                gridBorderColor : 'red'
+                gridBorderColor : '1px solid red'
             })
         }else{
             this.setState({
-                gridBorderColor : 'white'
+                gridBorderColor : '1px solid white'
             })
         }
     }
@@ -33,7 +33,7 @@ class GridItem extends Component {
           width: "200px",
           height: "100px",
           backgroundColor : this.state.gridItemColor,
-          borderColor : this.state.gridBorderColor
+          border : this.state.gridBorderColor
         };
 
         return (

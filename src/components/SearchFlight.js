@@ -17,8 +17,7 @@ class SearchFlight extends Component {
   };
 
   handleInput = (ev) => {
-    let searchDate = ev.target.value.split("-").join("/");
-    this.setState({ searchDate: searchDate });
+    this.setState({ searchDate: ev.target.value });
   };
   /* 
     TODO: 
@@ -41,20 +40,20 @@ class SearchFlight extends Component {
     if (this.state.flightData.length > 0) {
       console.log(this.state.flightData);
       if (this.state.flightData !== "No results found") {
-        flightArr = this.state.flightData.map((f) => {
-          console.log(f);
+        flightArr = this.state.flightData.map((flight, index) => {
+          console.log(flight);
           return (
-            <div key={f.id}>
+            <div key={index}>
               <h6>Date:</h6>
-              <p key={f.id}>{f.date}</p>
+              <p key={flight.id}>{flight.date}</p>
               <h6>Flight Number:</h6>
-              <p key={f.id}>
-                <Link to={`/search/${f.plane_id}`}>{f.flight_number}</Link>
+              <p key={flight.plane_id}>
+                <Link to={`/search/${flight.plane_id}`}>{flight.flight_number}</Link>
               </p>
               <h6>Departing From:</h6>
-              <p key={f.id}>{f.origin}</p>
+              <p key={flight.origin}>{flight.origin}</p>
               <h6>Arrivng At:</h6>
-              <p key={f.id}>{f.destination}</p>
+              <p key={flight.destination}>{flight.destination}</p>
             </div>
           );
         });

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class GridItem extends Component {
     state = {
         gridItemColor : 'grey',
-        gridBorderColor : '1px solid white'
+        gridBorderColor : '1px solid white',
+        itemText : ''
     }
     /*
         This method will be called when each grid item 
@@ -17,12 +18,19 @@ class GridItem extends Component {
     setGridItemValues = () => {
         if (this.props.isReserved){
             this.setState({
-                gridBorderColor : '1px solid red'
+                gridBorderColor : '1px solid red',
+                itemText : 'Not Availible'
             })
         }else{
             this.setState({
-                gridBorderColor : '1px solid white'
+                gridBorderColor : '1px solid white',
+                itemText : 'Availible'
             })
+        }
+    }
+    handleClick = (e) => {
+        if (this.props.isReserved){
+            
         }
     }
     componentDidMount = () => {
@@ -35,9 +43,8 @@ class GridItem extends Component {
           backgroundColor : this.state.gridItemColor,
           border : this.state.gridBorderColor
         };
-
         return (
-            <div style={itemStyle} className="grid-item">
+            <div style={itemStyle} className="grid-item" onClick={this.handleClick}>
                 <p>{this.props.reservee}</p>
             </div>
         );

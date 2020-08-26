@@ -57,7 +57,9 @@ class Grid extends Component {
         const gridStyle = {
           display: "grid",
           gridTemplateColumns: `repeat(4, 200px)`,
-          gridTemplateRows: `repeat(${this.state.rows}, 150px)`
+          gridTemplateRows: `repeat(${this.state.rows}, 150px)`,
+          rowGap : "10px",
+          columnGap : "17px"
         };
         return (
             <div style={gridStyle}>

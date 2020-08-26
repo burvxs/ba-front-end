@@ -39,7 +39,7 @@ class SearchFlight extends Component {
     let flightArr = [];
     if (this.state.flightData.length > 0) {
       console.log(this.state.flightData);
-      if (this.state.flightData !== "No results found") {
+      if (this.state.flightData !== "No flight results") {
         flightArr = this.state.flightData.map((flight, index) => {
           console.log(flight);
           return (
@@ -57,10 +57,13 @@ class SearchFlight extends Component {
             </div>
           );
         });
+        return flightArr;
+      }else{
+          return this.state.flightData
       }
     }
 
-    return flightArr;
+    
   };
 
   /*

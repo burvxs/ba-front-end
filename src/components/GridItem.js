@@ -32,9 +32,7 @@ class GridItem extends Component {
         }
     }
     handleClick = (e) => {
-        if (this.props.isReserved){
-
-        }
+        console.log(this.props.isReserved);
     }
     componentDidMount = () => {
         this.setGridItemValues();

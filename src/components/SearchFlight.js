@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
+const FLIGHT_API_URL = 'http://localhost:3000/flights';
+
 class SearchFlight extends Component {
     state = {
         toDestination : '',
@@ -8,11 +10,13 @@ class SearchFlight extends Component {
     }
     handleSearch = (e) => {
         e.preventDefault();
+        this.fetchFlights();
 
     }
     fetchFlights = () => {
-
-
+      axios.get(FLIGHT_API_URL + '/' + this.state.toDestination + '/' + this.state.fromDestination)
+      .then( response => console.log('Works!', response.data) )
+      .catch( error => console.warn('Yes', error ));
     }
     /*
         onChange handler is passed a method that directly sets the state

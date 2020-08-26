@@ -5,6 +5,7 @@ class GridItem extends Component {
         gridItemColor : 'grey',
         gridBorderColor : '1px solid white',
         itemText : '',
+        userText : '',
         userReservee : '',
         isReserved : false,
         seatPrice : 325
@@ -21,18 +22,28 @@ class GridItem extends Component {
     setGridItemValues = () => {
         if (this.props.isReserved){
             this.setState({
-                gridBorderColor : '1px solid red',
-                itemText : 'Not Availible'
-            })
+              gridBorderColor: "1px solid red",
+              itemText: "Not Available",
+            });
         }else{
             this.setState({
-                gridBorderColor : '1px solid white',
-                itemText : 'Availible'
-            })
+              gridBorderColor: "1px solid white",
+              itemText: "Available",
+            });
         }
     }
     handleClick = (e) => {
-        
+        if (!this.props.isReserved){
+            this.setState({
+                isReserved : true,
+                userText : <p>You've reserved this spot</p>,
+                itemText : ''
+            })
+        }else{
+            this.setState({
+                isReserved : false
+            })
+        }
     }
     componentDidMount = () => {
         this.setGridItemValues();
@@ -47,6 +58,7 @@ class GridItem extends Component {
         return (
             <div style={itemStyle} className="grid-item" onClick={this.handleClick}>
                 <p>{this.state.itemText}</p>
+                <p>{this.state.userText}</p>
             </div>
         );
     }

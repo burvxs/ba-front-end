@@ -118,7 +118,7 @@ class SearchFlight extends Component {
             this.setState({
               flightData: response.data.flight_data,
             });
-           
+
           } else {
             this.setState({
               flightData: [response.data.flight_data],
@@ -137,22 +137,23 @@ class SearchFlight extends Component {
   render() {
     return (
       <div>
+        <h2 class="welcome">Welcome to Burning Airlines</h2>
         <form onSubmit={this.handleSearch}>
-            <select onChange={(e) => this.setState({ toDestination: e.target.value })}>
+            <select class="select" onChange={(e) => this.setState({ toDestination: e.target.value })}>
                 <option value>From</option>
                 {this.state.origins.map((origin) => (
                 <option key={origin}>{origin}</option>
                 ))}
           </select>
-          <select onChange={(e) => this.setState({ fromDestination: e.target.value })}>         
+          <select class="select" onChange={(e) => this.setState({ fromDestination: e.target.value })}>
             <option value>To</option>
             {this.state.destinations.map((destination) => (
               <option key={destination}>{destination}</option>
             ))}
           </select>
-          <p>Depature Date:</p>
-          <input type="date" onChange={this.handleInput} />
-          <button onClick={this.handleSubmit}>Search</button>
+          <p class="depature">Depature Date:</p>
+          <input class="select" type="date" onChange={this.handleInput} />
+          <button class="search" onClick={this.handleSubmit}>Search</button>
           {this.renderFlightData()}
         </form>
       </div>

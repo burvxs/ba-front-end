@@ -1,8 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
 .grid-item {
   text-align: center;
   margin : 25px;
 }
 
-.App {
-  /* background-color: blue; */
+body {
+  background-image: url("images/sunset.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Shrikhand', cursive;
+}
+
+.select {
+  margin: 5px;
+  text-align: center;
+  color: orange;
+  cursor: pointer;
+}
+
+.search {
+  margin: 10px;
+  border: 2px solid;
+  border-color: #ff9800;
+  color: orange;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search:hover {
+  background: #ff9800;
+  color: white;
+}
+
+.welcome {
+  text-align: center;
+  font-size: 50px;
+  color: orange;
+
+}
+
+.depature {
+  text-align: center;
+  font-size: 20px;
 }

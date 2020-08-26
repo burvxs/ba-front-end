@@ -3,7 +3,8 @@ import axios from 'axios'
 
 class SearchFlight extends Component {
     state = {
-        query : ''
+        toDestination : '',
+        fromDestination : ''
     }
     handleSearch = (e) => {
         e.preventDefault();
@@ -20,11 +21,25 @@ class SearchFlight extends Component {
     */
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSearch}>
-                    <input type="text" onChange={e => this.setState({query : e.target.value})}/>
-                </form>
-            </div>
+          <div>
+            <form onSubmit={this.handleSearch}>
+              <input
+                type="text"
+                onChange={(e) =>
+                  this.setState({ toDestination: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                onChange={(e) =>
+                  this.setState({ fromDestination : e.target.value })
+                }
+              />
+              <button>
+                  Search
+              </button>
+            </form>
+          </div>
         );
     }
 }

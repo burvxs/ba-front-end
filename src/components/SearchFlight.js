@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios' 
+import axios from 'axios'
 
 class SearchFlight extends Component {
     state = {
@@ -11,10 +11,11 @@ class SearchFlight extends Component {
     }
     fetchFlights = () => {
 
+
     }
     /*
-        onChange handler is passed a method that directly sets the state 
-        rather then creating a method like "handleInput" I just call that 
+        onChange handler is passed a method that directly sets the state
+        rather then creating a method like "handleInput" I just call that
         behaviour to happen inside the onChange propertie
     */
     render() {

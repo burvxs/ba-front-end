@@ -27,7 +27,7 @@ class SearchFlight extends Component {
         let flightArr = []
         if(this.state.flightData.length > 0){
             console.log(this.state.flightData);
-            if (this.state.flightData != "No results found"){
+            if (this.state.flightData !== "No results found"){
                 flightArr = this.state.flightData.map((f) => {
                     console.log(f);
                     return (
@@ -73,11 +73,11 @@ class SearchFlight extends Component {
             }else{
                   if (Array.isArray(response.data.flight_data)) {
                   this.setState({
-                    flightData: response.data.flight_data.flight
+                    flightData: response.data.flight_data
                   });
                 } else {
                   this.setState({
-                    flightData: [response.data.flight_data.flight]
+                    flightData: [response.data.flight_data]
                   });
                 }
             }

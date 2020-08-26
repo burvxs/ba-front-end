@@ -52,6 +52,12 @@ class SearchFlight extends Component {
         statement.
     */
     fetchFlights = () => {
+<<<<<<< HEAD
+      axios.get(FLIGHT_API_URL + '/' + this.state.toDestination + '/' + this.state.fromDestination)
+      .then( response => console.log('Works!', response.data) )
+      .catch( error => console.warn('Error', error ));
+    } // fetchFlights()
+=======
         axios.get(FLIGHT_API_URL + "/" + this.state.toDestination + "/" + this.state.fromDestination)
         .then(response => {
             if (response.data.no_result){
@@ -66,6 +72,7 @@ class SearchFlight extends Component {
         })
         .catch(error => console.warn(error))
     }
+>>>>>>> 1d91795b6c5b9d4a810ffc35b7ac956e3f1588dd
     /*
         onChange handler is passed a method that directly sets the state
         rather then creating a method like "handleInput" I just call that

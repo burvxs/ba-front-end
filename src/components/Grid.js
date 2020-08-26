@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import GridItem from './GridItem';
 
-const GET_SEATS_URL = 'http://localhost/planes/'
+const GET_SEATS_URL = 'http://localhost:3000/planes/'
 
 class Grid extends Component {
     state = {
@@ -38,3 +38,5 @@ class Grid extends Component {
 }
 
 export default Grid;
+
+

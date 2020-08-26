@@ -37,7 +37,7 @@ class GridItem extends Component {
         };
 
         return (
-            <div style={itemStyle}>
+            <div style={itemStyle} className="grid-item">
                 <p>{this.props.reservee}</p>
             </div>
         );

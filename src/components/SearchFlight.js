@@ -8,7 +8,7 @@ class SearchFlight extends Component {
     state = {
         toDestination : '',
         fromDestination : '',
-        flightData : []
+        flightData : [],
     }
     handleSearch = (e) => {
         e.preventDefault();
@@ -27,14 +27,21 @@ class SearchFlight extends Component {
         let flightArr = []
         if(this.state.flightData.length > 0){
             console.log(this.state.flightData);
-            if (this.state.flightData != "No results found"){
+            if (this.state.flightData !== "No results found"){
                 flightArr = this.state.flightData.map((f) => {
+                    console.log(f);
                     return (
                       <div key={f.id}>
                         <h6>Date:</h6>
                           <p key={f.id}>{f.date}</p>
                         <h6>Flight Number:</h6>
+<<<<<<< HEAD
                           <p key={f.id}><Link to={`/search/${f.id}`}>{f.flight_number}</Link></p>
+=======
+                        <ul>
+                          <li key={f.id}><Link to={`/search/${f.plane_id}`}>{f.flight_number}</Link></li>
+                        </ul>
+>>>>>>> bf15da46cfca42656d432d61df8d5276221dfe27
                         <h6>Departing From:</h6>
                           <p key={f.id}>{f.origin}</p>
                         <h6>Arrivng At:</h6>
@@ -64,10 +71,14 @@ class SearchFlight extends Component {
             if (response.data.no_result){
                 this.setState({ flightData: response.data.fail_text });
             }else{
-                if (Array.isArray(response.data.flight_data)) {
-                    this.setState({ flightData: response.data.flight_data });
+                  if (Array.isArray(response.data.flight_data)) {
+                  this.setState({
+                    flightData: response.data.flight_data
+                  });
                 } else {
-                    this.setState({ flightData: [response.data.flight_data] });
+                  this.setState({
+                    flightData: [response.data.flight_data]
+                  });
                 }
             }
         })

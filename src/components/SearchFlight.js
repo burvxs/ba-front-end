@@ -35,36 +35,19 @@ class SearchFlight extends Component {
         return flightArr
     }
     /*
-        This method returns flight data from the back end 
-        once the response comes in from the server it checks 
-        if there is results if the no_result field returns true from the 
+        This method returns flight data from the back end
+        once the response comes in from the server it checks
+        if there is results if the no_result field returns true from the
         server the flight data state gets set to the fail_text from the server
-        else the flight data gets set to the response JSON if the data comes in from 
+        else the flight data gets set to the response JSON if the data comes in from
         the server as a pure JSON object then I turn it into an array in the else 
         statement.
     */
     fetchFlights = () => {
-<<<<<<< HEAD
       axios.get(FLIGHT_API_URL + '/' + this.state.toDestination + '/' + this.state.fromDestination)
       .then( response => console.log('Works!', response.data) )
       .catch( error => console.warn('Error', error ));
     } // fetchFlights()
-=======
-        axios.get(FLIGHT_API_URL + "/" + this.state.toDestination + "/" + this.state.fromDestination)
-        .then(response => {
-            if (response.data.no_result){
-                this.setState({ flightData: response.data.fail_text });
-            }else{
-                if (Array.isArray(response.data.flight_data)) {
-                    this.setState({ flightData: response.data.flight_data });
-                } else {
-                    this.setState({ flightData: [response.data.flight_data] });
-                }
-            }
-        })
-        .catch(error => console.warn(error))
-    }
->>>>>>> 1d91795b6c5b9d4a810ffc35b7ac956e3f1588dd
     /*
         onChange handler is passed a method that directly sets the state
         rather then creating a method like "handleInput" I just call that

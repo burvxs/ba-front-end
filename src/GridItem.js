@@ -14,15 +14,19 @@ class GridItem extends Component {
         every time this component is rendered to the DOM it will do the validations
         and update the GridItem's styling based on validation data
     */
-    renderGridItem = () => {
+    setGridItemValues = () => {
         if (this.props.isReserved){
             this.setState({
                 gridBorderColor : 'red'
             })
+        }else{
+            this.setState({
+                gridBorderColor : 'white'
+            })
         }
     }
     componentDidMount = () => {
-
+        this.setGridItemValues();
     }
     render() {
         const itemStyle = {
@@ -34,7 +38,7 @@ class GridItem extends Component {
 
         return (
             <div style={itemStyle}>
-                <p></p>
+                <p>{this.props.reservee}</p>
             </div>
         );
     }

@@ -14,7 +14,7 @@ class App extends React.Component {
           <Router>
             <Redirect to="/search" from="/"/>
             <Route exact path="/search" component={SearchFlight}/>
-            <Route exact path="/search/:query" component={FlightResults} />
+            <Route exact path="/search/:id" component={FlightResults} />
           </Router>
       </div>
     )

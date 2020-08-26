@@ -12,8 +12,16 @@ class SearchFlight extends Component {
     handleSearch = (e) => {
         e.preventDefault();
         this.fetchFlights();
-
     }
+    /* 
+        This method will render out every peice of information 
+        about the flights to the DOM it checks if the data has 
+        come in from the server once the front-end has recieved 
+        data from the server the method makes sure that its not the 
+        fail data if its all good to go through then it maps 
+        the flight data array which will be where it renders out
+        to the DOM
+    */
     renderFlightData = () => {
         let flightArr = []
         if(this.state.flightData.length > 0){
@@ -21,7 +29,7 @@ class SearchFlight extends Component {
             if (this.state.flightData != "No results found"){
                 flightArr = this.state.flightData.map((f) => {
                     return (
-                      <div>
+                      <div key={f.id}>
                         <h6>Dates:</h6>
                         <ul>
                           <li key={f.id}>{f.date}</li>

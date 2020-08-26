@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 class GridItem extends Component {
     state = {
-        reservedName : '',
-        isReserved : false
+        gridItemColor : 'grey',
+        gridBorderColor : 'white'
     }
     /*
         This method will be called when each grid item 
@@ -14,13 +14,27 @@ class GridItem extends Component {
         every time this component is rendered to the DOM it will do the validations
         and update the GridItem's styling based on validation data
     */
+    renderGridItem = () => {
+        if (this.props.isReserved){
+            this.setState({
+                gridBorderColor : 'red'
+            })
+        }
+    }
     componentDidMount = () => {
 
     }
     render() {
+        const itemStyle = {
+          width: "200px",
+          height: "100px",
+          backgroundColor : this.state.gridItemColor,
+          borderColor : this.state.gridBorderColor
+        };
+
         return (
-            <div>
-                
+            <div style={itemStyle}>
+                <p></p>
             </div>
         );
     }

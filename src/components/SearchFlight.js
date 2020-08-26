@@ -3,14 +3,36 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 const FLIGHT_API_URL = 'http://localhost:3000/flights';
+const OD_API_URL = 'http://localhost:3000/flights/origin/destination'
 
 class SearchFlight extends Component {
   state = {
     toDestination: "",
     fromDestination: "",
     flightData: [],
-    searchDate : ''
+    searchDate : '',
+    origins: [],
+    destinations: []
   };
+
+  componentDidMount = () => {
+    this.populateOptions();
+  }
+
+  populateOptions = () => {
+    axios.get(OD_API_URL)
+    .then(res => {
+      this.setState({
+        origins : res.data.origins,
+        destinations : res.data.destinations
+      })
+    })
+    .catch( error => {
+      console.warn(error);
+    })
+  }
+
+
   handleSearch = (e) => {
     e.preventDefault();
     this.fetchFlights();
@@ -19,8 +41,8 @@ class SearchFlight extends Component {
   handleInput = (ev) => {
     this.setState({ searchDate: ev.target.value });
   };
-  /* 
-    TODO: 
+  /*
+    TODO:
   */
   handleSubmit = () => {
     console.log("Search submitted:", this.state.searchDate);
@@ -80,7 +102,7 @@ class SearchFlight extends Component {
           this.state.toDestination +
           "/" +
           this.state.fromDestination +
-          "/" + 
+          "/" +
           this.state.searchDate
       )
       .then((response) => {
@@ -109,15 +131,15 @@ class SearchFlight extends Component {
     return (
       <div>
         <form onSubmit={this.handleSearch}>
-          <input
-            type="text"
-            onChange={(e) => this.setState({ toDestination: e.target.value })}
-          />
-          <input
-            type="text"
-            onChange={(e) => this.setState({ fromDestination: e.target.value })}
-          />
-          <h2>Select Travel Dates:</h2>
+            <select onChange={e => this.setState({fromDestination: e.target.value})}>
+              <option selected>From</option>
+             {this.state.origins.map(origin => <option>{origin}</option>)}
+            </select>
+            <select onChange={e => this.setState({toDestination: e.target.value})}>
+              <option selected>To</option>
+              {this.state.destinations.map(destination => <option>{destination}</option>)}
+            </select>
+        <p>Depature Date:</p>
           <input type="date" onChange={this.handleInput} />
           <button onClick={this.handleSubmit}>Search</button>
           {this.renderFlightData()}

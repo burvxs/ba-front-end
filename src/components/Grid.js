@@ -11,6 +11,7 @@ class Grid extends Component {
         rows : 0,
         cols : 0,
         seats : [],
+        reserved : {},
         isLoaded : true
     }
     componentDidMount = () => {
@@ -42,6 +43,12 @@ class Grid extends Component {
             console.warn(error);
         })
     }
+    passReserveInfo = (reserveInfo, index) => {
+        this.setState({
+            reserved : reserveInfo
+        })
+        
+    }
     /*
         This method maps the seats array and returns a array of grid item 
         components and passes down the seat information to the grid item component 
@@ -50,7 +57,13 @@ class Grid extends Component {
     */
     renderItems = () => {
         return this.state.seats.map((seat, index) => 
-            <GridItem isReserved={seat.is_reserved} reservee={seat.reservee} key={index}/>
+            <GridItem 
+                onReserve={this.passReserveInfo}
+                isReserved={seat.is_reserved}
+                reservee={seat.reservee} 
+                index={index} 
+                key={index}
+            />
         );
     }
     render() {

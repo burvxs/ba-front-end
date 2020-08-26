@@ -87,7 +87,9 @@ class SearchFlight extends Component {
 
     
   };
-
+  formatDate = date => {
+    return date.split("-").reverse().join("-");
+  }
   /*
         This method returns flight data from the back end
         once the response comes in from the server it checks
@@ -116,12 +118,14 @@ class SearchFlight extends Component {
             this.setState({
               flightData: response.data.flight_data,
             });
+           
           } else {
             this.setState({
               flightData: [response.data.flight_data],
             });
           }
         }
+        console.log(response);
       })
       .catch((error) => console.warn(error));
   };
@@ -134,15 +138,19 @@ class SearchFlight extends Component {
     return (
       <div>
         <form onSubmit={this.handleSearch}>
-            <select onChange={e => this.setState({fromDestination: e.target.value})}>
-              <option selected>From</option>
-             {this.state.origins.map(origin => <option>{origin}</option>)}
-            </select>
-            <select onChange={e => this.setState({toDestination: e.target.value})}>
-              <option selected>To</option>
-              {this.state.destinations.map(destination => <option>{destination}</option>)}
-            </select>
-        <p>Depature Date:</p>
+            <select onChange={(e) => this.setState({ toDestination: e.target.value })}>
+                <option value>From</option>
+                {this.state.origins.map((origin) => (
+                <option key={origin}>{origin}</option>
+                ))}
+          </select>
+          <select onChange={(e) => this.setState({ fromDestination: e.target.value })}>         
+            <option value>To</option>
+            {this.state.destinations.map((destination) => (
+              <option key={destination}>{destination}</option>
+            ))}
+          </select>
+          <p>Depature Date:</p>
           <input type="date" onChange={this.handleInput} />
           <button onClick={this.handleSubmit}>Search</button>
           {this.renderFlightData()}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 const FLIGHT_API_URL = 'http://localhost:3000/flights';
@@ -13,12 +14,12 @@ class SearchFlight extends Component {
         e.preventDefault();
         this.fetchFlights();
     }
-    /* 
-        This method will render out every peice of information 
-        about the flights to the DOM it checks if the data has 
-        come in from the server once the front-end has recieved 
-        data from the server the method makes sure that its not the 
-        fail data if its all good to go through then it maps 
+    /*
+        This method will render out every peice of information
+        about the flights to the DOM it checks if the data has
+        come in from the server once the front-end has recieved
+        data from the server the method makes sure that its not the
+        fail data if its all good to go through then it maps
         the flight data array which will be where it renders out
         to the DOM
     */
@@ -30,9 +31,21 @@ class SearchFlight extends Component {
                 flightArr = this.state.flightData.map((f) => {
                     return (
                       <div key={f.id}>
-                        <h6>Dates:</h6>
+                        <h6>Date:</h6>
                         <ul>
                           <li key={f.id}>{f.date}</li>
+                        </ul>
+                        <h6>Flight Number:</h6>
+                        <ul>
+                          <li key={f.id}><Link to={`/search/${f.id}`}>{f.flight_number}</Link></li>
+                        </ul>
+                        <h6>Departing From:</h6>
+                        <ul>
+                          <li key={f.id}>{f.origin}</li>
+                        </ul>
+                        <h6>Arrivng At:</h6>
+                        <ul>
+                          <li key={f.id}>{f.destination}</li>
                         </ul>
                       </div>
                     );
@@ -48,7 +61,7 @@ class SearchFlight extends Component {
         if there is results if the no_result field returns true from the
         server the flight data state gets set to the fail_text from the server
         else the flight data gets set to the response JSON if the data comes in from
-        the server as a pure JSON object then I turn it into an array in the else 
+        the server as a pure JSON object then I turn it into an array in the else
         statement.
     */
     fetchFlights = () => {

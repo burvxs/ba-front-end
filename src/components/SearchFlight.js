@@ -85,7 +85,7 @@ class SearchFlight extends Component {
       }
     }
 
-    
+
   };
 
   /*

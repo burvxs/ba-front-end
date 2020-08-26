@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+
 
 const FLIGHT_API_URL = 'http://localhost:3000/flights';
 const OD_API_URL = 'http://localhost:3000/flights/origin/destination'
+
+
 
 class SearchFlight extends Component {
   state = {
@@ -129,12 +132,27 @@ class SearchFlight extends Component {
       })
       .catch((error) => console.warn(error));
   };
+  render() {
+    const pageStyle = {
+      width: "200px",
+      height: "100px",
+
+    };
+
+    return (
+        <div style={pageStyle}>
+            <p>demo</p>
+        </div>
+    );
+  }
   /*
         onChange handler is passed a method that directly sets the state
         rather then creating a method like "handleInput" I just call that
         behaviour to happen inside the onChange propertie
     */
   render() {
+
+
     return (
       <div>
         <h2 class="welcome">Welcome to Burning Airlines</h2>

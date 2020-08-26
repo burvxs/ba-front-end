@@ -11,8 +11,8 @@ class GridItem extends Component {
         seatPrice : 325
     }
     /*
-        This method will be called when each grid item 
-        is mounted or rendered to the DOM I need to check if 
+        This method will be called when each grid item
+        is mounted or rendered to the DOM I need to check if
         the seat is populated and get the reserved name.
 
         This component will be rendered iteratively (looped through)

@@ -32,21 +32,13 @@ class SearchFlight extends Component {
                     return (
                       <div key={f.id}>
                         <h6>Date:</h6>
-                        <ul>
-                          <li key={f.id}>{f.date}</li>
-                        </ul>
+                          <p key={f.id}>{f.date}</p>
                         <h6>Flight Number:</h6>
-                        <ul>
-                          <li key={f.id}><Link to={`/search/${f.id}`}>{f.flight_number}</Link></li>
-                        </ul>
+                          <p key={f.id}><Link to={`/search/${f.id}`}>{f.flight_number}</Link></p>
                         <h6>Departing From:</h6>
-                        <ul>
-                          <li key={f.id}>{f.origin}</li>
-                        </ul>
+                          <p key={f.id}>{f.origin}</p>
                         <h6>Arrivng At:</h6>
-                        <ul>
-                          <li key={f.id}>{f.destination}</li>
-                        </ul>
+                          <p key={f.id}>{f.destination}</p>
                       </div>
                     );
                 });
@@ -55,6 +47,8 @@ class SearchFlight extends Component {
 
         return flightArr
     }
+
+
     /*
         This method returns flight data from the back end
         once the response comes in from the server it checks

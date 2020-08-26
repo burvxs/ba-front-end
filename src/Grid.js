@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
+
+const GET_SEATS_URL = 'http://localhost/reservations'
 
 class Grid extends Component {
     state = {
@@ -8,11 +11,7 @@ class Grid extends Component {
         items : []
     }
     populateItems = () => {
-        for(let i = 0; i < itemCount; i++){
-            this.setState({
-                items : [...items, <GridItem/>]
-            })
-        }
+        
     }
     renderItems = () => {
         return this.state.items;

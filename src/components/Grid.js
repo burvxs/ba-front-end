@@ -10,8 +10,11 @@ class Grid extends Component {
         cols : 0,
         seats : []
     }
+    componentDidMount = () => {
+        this.populateSeats();
+    }
     populateSeats = () => {
-        axios.get(GET_SEATS_URL + "29/seats")
+        axios.get(GET_SEATS_URL + `${this.props.flightId}/seats`)
         .then(res => {
             this.setState({
                 rows : res.data.plane_data.rows,

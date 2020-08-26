@@ -3,9 +3,21 @@ import axios from 'axios'
 
 class ReservationsForm extends Component {
 
+  state = {
+    searchDate: ''
+  };
+
   handleInput = (ev) => {
-    this.setState ({})
+    let searchDate = ev.target.value.split('-').join('/')
+    console.log(searchDate);
+    this.setState ({ searchDate: ev.target.value });
   }
+
+  handleSubmit = () => {
+    console.log('Search submitted:', this.state.searchDate);
+  }
+
+
 
 
   render(){
@@ -20,9 +32,9 @@ class ReservationsForm extends Component {
 
 } // class ReservationsForm
 
-- class
-- handle input for date
-- handle submit - axios post
-- render input  - get origin and destination
+// - class
+// - handle input for date
+// - handle submit - axios post
+// - render input  - get origin and destination
 
 export default ReservationsForm;

@@ -4,7 +4,10 @@ class GridItem extends Component {
     state = {
         gridItemColor : 'grey',
         gridBorderColor : '1px solid white',
-        itemText : ''
+        itemText : '',
+        userReservee : '',
+        isReserved : false,
+        seatPrice : 325
     }
     /*
         This method will be called when each grid item 
@@ -30,7 +33,7 @@ class GridItem extends Component {
     }
     handleClick = (e) => {
         if (this.props.isReserved){
-            
+
         }
     }
     componentDidMount = () => {

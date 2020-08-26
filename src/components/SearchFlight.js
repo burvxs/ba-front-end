@@ -132,46 +132,31 @@ class SearchFlight extends Component {
       })
       .catch((error) => console.warn(error));
   };
-  render() {
-    const pageStyle = {
-      width: "200px",
-      height: "100px",
-
-    };
-
-    return (
-        <div style={pageStyle}>
-            <p>demo</p>
-        </div>
-    );
-  }
   /*
         onChange handler is passed a method that directly sets the state
         rather then creating a method like "handleInput" I just call that
         behaviour to happen inside the onChange propertie
     */
   render() {
-
-
     return (
       <div>
-        <h2 class="welcome">Welcome to Burning Airlines</h2>
+        <h2 className="welcome">Welcome to Burning Airlines</h2>
         <form onSubmit={this.handleSearch}>
-            <select class="select" onChange={(e) => this.setState({ toDestination: e.target.value })}>
+            <select className="select" onChange={(e) => this.setState({ toDestination: e.target.value })}>
                 <option value>From</option>
                 {this.state.origins.map((origin) => (
                 <option key={origin}>{origin}</option>
                 ))}
           </select>
-          <select class="select" onChange={(e) => this.setState({ fromDestination: e.target.value })}>
+          <select className="select" onChange={(e) => this.setState({ fromDestination: e.target.value })}>
             <option value>To</option>
             {this.state.destinations.map((destination) => (
               <option key={destination}>{destination}</option>
             ))}
           </select>
-          <p class="depature">Depature Date:</p>
-          <input class="select" type="date" onChange={this.handleInput} />
-          <button class="search" onClick={this.handleSubmit}>Search</button>
+          <p className="depature">Depature Date:</p>
+          <input className="select" type="date" onChange={this.handleInput} />
+          <button className="search" onClick={this.handleSubmit}>Search</button>
           {this.renderFlightData()}
         </form>
       </div>

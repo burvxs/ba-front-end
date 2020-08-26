@@ -44,10 +44,12 @@ class Grid extends Component {
         })
     }
     passReserveInfo = (reserveInfo, index) => {
+        let tempSeatItems = Object.assign(this.state.seats)
+        tempSeatItems[index] = reserveInfo
         this.setState({
-            reserved : reserveInfo
-        })
-        
+            reserved : reserveInfo,
+            seats : tempSeatItems
+        });
     }
     /*
         This method maps the seats array and returns a array of grid item 

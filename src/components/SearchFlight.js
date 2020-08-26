@@ -43,11 +43,11 @@ class SearchFlight extends Component {
         return flightArr
     }
     /*
-        This method returns flight data from the back end 
-        once the response comes in from the server it checks 
-        if there is results if the no_result field returns true from the 
+        This method returns flight data from the back end
+        once the response comes in from the server it checks
+        if there is results if the no_result field returns true from the
         server the flight data state gets set to the fail_text from the server
-        else the flight data gets set to the response JSON if the data comes in from 
+        else the flight data gets set to the response JSON if the data comes in from
         the server as a pure JSON object then I turn it into an array in the else 
         statement.
     */

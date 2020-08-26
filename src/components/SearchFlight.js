@@ -13,9 +13,48 @@ class SearchFlight extends Component {
         e.preventDefault();
         this.fetchFlights();
     }
+    renderFlightData = () => {
+        let flightArr = []
+        if(this.state.flightData.length > 0){
+            console.log(this.state.flightData);
+            if (this.state.flightData != "No results found"){
+                flightArr = this.state.flightData.map((f) => {
+                    return (
+                      <div>
+                        <h6>Dates:</h6>
+                        <ul>
+                          <li key={f.id}>{f.date}</li>
+                        </ul>
+                      </div>
+                    );
+                });
+            }
+        }
+
+        return flightArr
+    }
+    /*
+        This method returns flight data from the back end 
+        once the response comes in from the server it checks 
+        if there is results if the no_result field returns true from the 
+        server the flight data state gets set to the fail_text from the server
+        else the flight data gets set to the response JSON if the data comes in from 
+        the server as a pure JSON object then I turn it into an array in the else 
+        statement.
+    */
     fetchFlights = () => {
         axios.get(FLIGHT_API_URL + "/" + this.state.toDestination + "/" + this.state.fromDestination)
-        .then(response => console.log(response.data))
+        .then(response => {
+            if (response.data.no_result){
+                this.setState({ flightData: response.data.fail_text });
+            }else{
+                if (Array.isArray(response.data.flight_data)) {
+                    this.setState({ flightData: response.data.flight_data });
+                } else {
+                    this.setState({ flightData: [response.data.flight_data] });
+                }
+            }
+        })
         .catch(error => console.warn(error))
     }
     /*
@@ -42,6 +81,7 @@ class SearchFlight extends Component {
               <button>
                   Search
               </button>
+              {this.renderFlightData()}
             </form>
           </div>
         );

@@ -62,9 +62,10 @@ class Grid extends Component {
           columnGap : "17px"
         };
         return (
-            <div style={gridStyle}>
-                {this.renderItems()}
-            </div>
+          <div>
+            <h1>Please select an available seat</h1>
+            <div style={gridStyle}>{this.renderItems()}</div>
+          </div>
         );
     }
 }

@@ -32,9 +32,7 @@ class GridItem extends Component {
         }
     }
     handleClick = (e) => {
-        if (this.props.isReserved){
-
-        }
+        
     }
     componentDidMount = () => {
         this.setGridItemValues();
@@ -48,7 +46,7 @@ class GridItem extends Component {
         };
         return (
             <div style={itemStyle} className="grid-item" onClick={this.handleClick}>
-                <p>{this.props.reservee}</p>
+                <p>{this.state.itemText}</p>
             </div>
         );
     }

@@ -59,7 +59,7 @@ class SearchFlight extends Component {
         });
         return flightArr;
       }else{
-          return this.state.flightData
+        return this.state.flightData
       }
     }
 

@@ -8,7 +8,7 @@ class SearchFlight extends Component {
     state = {
         toDestination : '',
         fromDestination : '',
-        flightData : []
+        flightData : [],
     }
     handleSearch = (e) => {
         e.preventDefault();
@@ -29,6 +29,7 @@ class SearchFlight extends Component {
             console.log(this.state.flightData);
             if (this.state.flightData != "No results found"){
                 flightArr = this.state.flightData.map((f) => {
+                    console.log(f);
                     return (
                       <div key={f.id}>
                         <h6>Date:</h6>
@@ -37,7 +38,7 @@ class SearchFlight extends Component {
                         </ul>
                         <h6>Flight Number:</h6>
                         <ul>
-                          <li key={f.id}><Link to={`/search/${f.id}`}>{f.flight_number}</Link></li>
+                          <li key={f.id}><Link to={`/search/${f.plane_id}`}>{f.flight_number}</Link></li>
                         </ul>
                         <h6>Departing From:</h6>
                         <ul>
@@ -70,10 +71,14 @@ class SearchFlight extends Component {
             if (response.data.no_result){
                 this.setState({ flightData: response.data.fail_text });
             }else{
-                if (Array.isArray(response.data.flight_data)) {
-                    this.setState({ flightData: response.data.flight_data });
+                  if (Array.isArray(response.data.flight_data)) {
+                  this.setState({
+                    flightData: response.data.flight_data.flight
+                  });
                 } else {
-                    this.setState({ flightData: [response.data.flight_data] });
+                  this.setState({
+                    flightData: [response.data.flight_data.flight]
+                  });
                 }
             }
         })

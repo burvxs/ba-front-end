@@ -5,9 +5,6 @@ import FlightResults from './components/FlightResults'
 import SearchFlight from './components/SearchFlight';
 
 class App extends React.Component {
-  setWindowLocation = (local) => {
-    
-  }
   render(){
     return (
         <div className="App">

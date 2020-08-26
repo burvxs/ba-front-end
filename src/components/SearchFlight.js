@@ -35,13 +35,7 @@ class SearchFlight extends Component {
                         <h6>Date:</h6>
                           <p key={f.id}>{f.date}</p>
                         <h6>Flight Number:</h6>
-<<<<<<< HEAD
                           <p key={f.id}><Link to={`/search/${f.id}`}>{f.flight_number}</Link></p>
-=======
-                        <ul>
-                          <li key={f.id}><Link to={`/search/${f.plane_id}`}>{f.flight_number}</Link></li>
-                        </ul>
->>>>>>> bf15da46cfca42656d432d61df8d5276221dfe27
                         <h6>Departing From:</h6>
                           <p key={f.id}>{f.origin}</p>
                         <h6>Arrivng At:</h6>

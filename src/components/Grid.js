@@ -13,6 +13,7 @@ class Grid extends Component {
         seats : [],
         reserved : {},
         isLoaded : true
+        staticSeats : []
     }
     componentDidMount = () => {
         this.populateSeats();
@@ -22,6 +23,22 @@ class Grid extends Component {
     componentWillUnmount = () => {
         this.isUnmounted = true
     }
+
+    getStaticSeat = () => {
+      axios.get(GET_SEATS_URL + `${this.props.flightId}/staticseats`)
+      .then(res => {
+        console.log(res.data);
+        if (this.isUnmounted)
+          return
+        }
+        this.setState({
+          staticSeats : res.data.seat_data
+        })
+        .catch(error => {
+          console.warn(error);
+        })
+    }
+
     /*
         Sets the state of the rows, columns and seats array
         if the component gets unmounted (leaves the DOM) this

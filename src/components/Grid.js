@@ -11,7 +11,9 @@ class Grid extends Component {
         rows : 0,
         cols : 0,
         seats : [],
-        isLoaded : true
+        reserved : {},
+        isLoaded : true,
+        staticSeats : []
     }
     componentDidMount = () => {
         this.populateSeats();

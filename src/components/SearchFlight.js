@@ -68,17 +68,17 @@ class SearchFlight extends Component {
         flightArr = this.state.flightData.map((flight, index) => {
           console.log(flight);
           return (
-            <div key={index}>
-              <h6>Date:</h6>
-              <p key={flight.id}>{flight.date}</p>
-              <h6>Flight Number:</h6>
-              <p key={flight.plane_id}>
+            <div className="result" key={index}>
+              <h6 className="date">Date:</h6>
+              <p className="dateresult" key={flight.id}>{flight.date}</p>
+              <h6 className="flight">Flight Number:</h6>
+              <p className="flightresult" key={flight.plane_id}>
                 <Link to={`/search/${flight.plane_id}`}>{flight.flight_number}</Link>
               </p>
-              <h6>Departing From:</h6>
-              <p key={flight.origin}>{flight.origin}</p>
-              <h6>Arrivng At:</h6>
-              <p key={flight.destination}>{flight.destination}</p>
+              <h6 className="depart">Departing From:</h6>
+              <p className="departresult" key={flight.origin}>{flight.origin}</p>
+              <h6 className="arrive">Arrivng At:</h6>
+              <p className="arriveresult" key={flight.destination}>{flight.destination}</p>
             </div>
           );
         });
@@ -140,24 +140,25 @@ class SearchFlight extends Component {
   render() {
     return (
       <div>
-        <h2 className="welcome">Welcome to Burning Airlines</h2>
+        <h2 className="welcome">Welcome to <span>BURNING</span> Airlines</h2>
         <form onSubmit={this.handleSearch}>
-            <select className="select" onChange={(e) => this.setState({ toDestination: e.target.value })}>
+            <select className="select or" onChange={(e) => this.setState({ toDestination: e.target.value })}>
                 <option value>From</option>
                 {this.state.origins.map((origin) => (
                 <option key={origin}>{origin}</option>
                 ))}
           </select>
-          <select className="select" onChange={(e) => this.setState({ fromDestination: e.target.value })}>
+          <select className="select des" onChange={(e) => this.setState({ fromDestination: e.target.value })}>
             <option value>To</option>
             {this.state.destinations.map((destination) => (
               <option key={destination}>{destination}</option>
             ))}
           </select>
           <p className="depature">Depature Date:</p>
-          <input className="select" type="date" onChange={this.handleInput} />
+          <input className="select dep" type="date" onChange={this.handleInput} />
           <button className="search" onClick={this.handleSubmit}>Search</button>
           {this.renderFlightData()}
+          <h3 className="hell">Get ready for one <span>HELL</span> of a trip!</h3>
         </form>
       </div>
     );

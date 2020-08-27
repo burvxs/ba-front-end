@@ -59,7 +59,7 @@ class GridItem extends Component {
         return (
             <div style={itemStyle} className="grid-item" onClick={this.handleClick}>
                 <p>{this.state.itemText}</p>
-                <p>{this.state.userText}</p>
+                   {this.state.userText}
             </div>
         );
     }

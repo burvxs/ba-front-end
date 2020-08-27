@@ -32,13 +32,18 @@ class GridItem extends Component {
             });
         }
     }
-    handleClick = (e) => {
+    handleClick = () => {
         if (!this.props.isReserved){
             this.setState({
                 isReserved : true,
                 userText : <p>You've reserved this spot</p>,
                 itemText : ''
             })
+            this.props.onReserve({
+                userReservee : 'Ben',
+                isReserved : this.state.isReserved,
+                index : this.props.index
+            }, this.props.index);
         }else{
             this.setState({
                 isReserved : false

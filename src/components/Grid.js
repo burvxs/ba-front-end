@@ -50,6 +50,7 @@ class Grid extends Component {
             reserved : reserveInfo,
             seats : tempSeatItems
         });
+        console.log(this.state.seats);
     }
     /*
         This method maps the seats array and returns a array of grid item 

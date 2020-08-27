@@ -16,6 +16,7 @@ class Grid extends Component {
     }
     componentDidMount = () => {
         this.populateSeats();
+        setInterval( this.populateSeats, 1000 );
     }
 
     componentWillUnmount = () => {
@@ -24,12 +25,13 @@ class Grid extends Component {
     /*
         Sets the state of the rows, columns and seats array
         if the component gets unmounted (leaves the DOM) this
-        method does nothing it just returns other wise we get a memory 
+        method does nothing it just returns other wise we get a memory
         leak or something I don't know I just wanted the warning gone.
     */
     populateSeats = () => {
         axios.get(GET_SEATS_URL + `${this.props.flightId}/seats`)
         .then(res => {
+          console.log(res.data);
             if (this.isUnmounted){
                 return
             }
@@ -53,18 +55,18 @@ class Grid extends Component {
         console.log(this.state.seats);
     }
     /*
-        This method maps the seats array and returns a array of grid item 
-        components and passes down the seat information to the grid item component 
-        and then the GridItem handles that data for each reccurring GridItem thats being 
+        This method maps the seats array and returns a array of grid item
+        components and passes down the seat information to the grid item component
+        and then the GridItem handles that data for each reccurring GridItem thats being
         outputted in this map method
     */
     renderItems = () => {
-        return this.state.seats.map((seat, index) => 
-            <GridItem 
+        return this.state.seats.map((seat, index) =>
+            <GridItem
                 onReserve={this.passReserveInfo}
                 isReserved={seat.is_reserved}
-                reservee={seat.reservee} 
-                index={index} 
+                reservee={seat.reservee}
+                index={index}
                 key={index}
             />
         );
@@ -87,5 +89,3 @@ class Grid extends Component {
 }
 
 export default Grid;
-
-

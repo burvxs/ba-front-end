@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Grid from './Grid'
 
-const SEAT_DATA_POST_URL = "http://localhost:3000/planes"
+const SEAT_DATA_POST_URL = "http://localhost:3000/flights"
 /*
     This component will render the grid and reservation form components
     once the route changes. This component is a handler to render out
@@ -23,7 +23,7 @@ class FlightHandler extends Component {
         })
         console.log(this.state.seatData);
         axios.post(SEAT_DATA_POST_URL.concat(`/${this.getParams().id}/seats`), {
-            seat : this.state.seatData[this.state.seatIndex],
+            seat : {reservee: "John", is_reserved: true},
             index : this.state.seatIndex
         })
         .then(res => {

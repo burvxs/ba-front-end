@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import GridItem from './GridItem';
 
-const GET_SEATS_URL = 'http://localhost:3000/planes/'
+const GET_SEATS_URL = 'http://localhost:3000/flights/'
 
 class Grid extends Component {
     isUnmounted = false;
@@ -55,9 +55,9 @@ class Grid extends Component {
                 return;
             }
             this.setState({
-                rows: res.data.plane_data.rows,
-                cols: res.data.plane_data.columns,
-                seats: res.data.plane_data.seat_data,
+                rows: res.data.flight_data.rows,
+                cols: res.data.flight_data.columns,
+                seats: res.data.flight_data.seat_data,
             });
             })
             .catch((error) => {

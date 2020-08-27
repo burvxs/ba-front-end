@@ -73,7 +73,7 @@ class SearchFlight extends Component {
               <p className="dateresult" key={flight.id}>{flight.date}</p>
               <h6 className="flight">Flight Number:</h6>
               <p className="flightresult" key={flight.plane_id}>
-                <Link to={`/search/${flight.plane_id}`}>{flight.flight_number}</Link>
+                <Link to={`/search/${flight.id}`}>{flight.flight_number}</Link>
               </p>
               <h6 className="depart">Departing From:</h6>
               <p className="departresult" key={flight.origin}>{flight.origin}</p>

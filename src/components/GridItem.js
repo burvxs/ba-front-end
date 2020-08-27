@@ -44,10 +44,6 @@ class GridItem extends Component {
                 isReserved : this.state.isReserved,
                 index : this.props.index
             }, this.props.index);
-        }else{
-            this.setState({
-                isReserved : false
-            })
         }
     }
     componentDidMount = () => {

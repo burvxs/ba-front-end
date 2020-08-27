@@ -11,7 +11,6 @@ class Grid extends Component {
         rows : 0,
         cols : 0,
         seats : [],
-        reserved : {},
         isLoaded : true
     }
     componentDidMount = () => {
@@ -47,9 +46,9 @@ class Grid extends Component {
         let tempSeatItems = Object.assign(this.state.seats)
         tempSeatItems[index] = reserveInfo
         this.setState({
-            reserved : reserveInfo,
             seats : tempSeatItems
         });
+        this.props.onDataHandle(this.state.seats, index)
         console.log(this.state.seats);
     }
     /*

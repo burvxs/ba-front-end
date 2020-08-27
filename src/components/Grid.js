@@ -11,7 +11,7 @@ class Grid extends Component {
         rows : 0,
         cols : 0,
         seats : [],
-        isLoaded : true
+        isLoaded : true,
         staticSeats : []
     }
     componentDidMount = () => {
@@ -24,17 +24,18 @@ class Grid extends Component {
     }
 
     getStaticSeat = () => {
-      axios.get(GET_SEATS_URL + `${this.props.flightId}/staticseats`)
-      .then(res => {
-        console.log(res.data);
-        if (this.isUnmounted)
-          return
-        }
-        this.setState({
-          staticSeats : res.data.seat_data
+        axios.get(GET_SEATS_URL + `${this.props.flightId}/staticseats`)
+        .then(res => {
+            console.log(res.data);
+            if (this.isUnmounted){
+            return
+            }
+            this.setState({
+            staticSeats : res.data.seat_data
+            })
         })
         .catch(error => {
-          console.warn(error);
+            console.warn(error);
         })
     }
 

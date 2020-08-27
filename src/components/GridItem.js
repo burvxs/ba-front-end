@@ -40,9 +40,8 @@ class GridItem extends Component {
                 itemText : ''
             })
             this.props.onReserve({
-                userReservee : 'Ben',
-                isReserved : this.state.isReserved,
-                index : this.props.index
+                reservee : 'Ben',
+                is_reserved : this.state.isReserved
             }, this.props.index);
         }
     }

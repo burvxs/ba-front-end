@@ -11,27 +11,26 @@ class Grid extends Component {
         rows : 0,
         cols : 0,
         seats : [],
-        isLoaded : true,
-        staticSeats : []
+        isLoaded : true
     }
     componentDidMount = () => {
         this.populateSeats();
-        setInterval( this.populateSeats, 1000 );
+        setInterval(this.populateSeats, 1000 );
     }
 
     componentWillUnmount = () => {
         this.isUnmounted = true
     }
 
-    getStaticSeat = () => {
+    getStaticSeats = () => {
         axios.get(GET_SEATS_URL + `${this.props.flightId}/staticseats`)
         .then(res => {
             console.log(res.data);
             if (this.isUnmounted){
-            return
+                return
             }
             this.setState({
-            staticSeats : res.data.seat_data
+                seats : res.data.seat_data
             })
         })
         .catch(error => {
@@ -46,21 +45,29 @@ class Grid extends Component {
         leak or something I don't know I just wanted the warning gone.
     */
     populateSeats = () => {
-        axios.get(GET_SEATS_URL + `${this.props.flightId}/seats`)
-        .then(res => {
-          console.log(res.data);
-            if (this.isUnmounted){
-                return
+        if (this.props.responseSeats !== undefined){
+            axios.get(GET_SEATS_URL + `${this.props.flightId}/seats`)
+            .then((res) => {
+            console.log(res.data);
+            if (this.isUnmounted) {
+                return;
             }
             this.setState({
-                rows : res.data.plane_data.rows,
-                cols : res.data.plane_data.columns,
-                seats : res.data.plane_data.seat_data,
+                rows: res.data.plane_data.rows,
+                cols: res.data.plane_data.columns,
+                seats: res.data.plane_data.seat_data,
+            });
             })
-        })
-        .catch(error => {
+            .catch((error) => {
             console.warn(error);
-        })
+            });
+        }else{
+            console.log("Hello");
+            this.setState({
+                seats : this.props.responseSeats
+            })
+        }
+
     }
     passReserveInfo = (reserveInfo, index) => {
         let tempSeatItems = Object.assign(this.state.seats)

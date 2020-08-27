@@ -14,17 +14,22 @@ class FlightHandler extends Component {
     state = {
         seatData : [],
         seatIndex : 0,
+        responseSeats : []
     }
     setFlightData = (seats, seatIndex) => {
         this.setState({
             seatData : seats,
             seatIndex : seatIndex
         })
+        console.log(this.state.seatData);
         axios.post(SEAT_DATA_POST_URL.concat(`/${this.getParams().id}/seats`), {
-            seats : this.state.seatData
+            seat : this.state.seatData[this.state.seatIndex],
+            index : this.state.seatIndex
         })
         .then(res => {
-            console.log(res.data)
+            this.setState({
+                responseSeats : res.data.seat_data
+            })
         })
         .catch(error => console.log(error))
     }
@@ -35,7 +40,7 @@ class FlightHandler extends Component {
     render() {
         return (
             <div>
-                <Grid flightId={this.getParams().id} onDataHandle={this.setFlightData}/>
+                <Grid flightId={this.getParams().id} onDataHandle={this.setFlightData} responseSeats={this.state.responseSeats}/>
             </div>
         );
     }

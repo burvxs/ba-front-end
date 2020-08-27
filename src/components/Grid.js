@@ -12,7 +12,7 @@ class Grid extends Component {
         cols : 0,
         seats : [],
         reserved : {},
-        isLoaded : true
+        isLoaded : true,
         staticSeats : []
     }
     componentDidMount = () => {
@@ -30,7 +30,7 @@ class Grid extends Component {
         console.log(res.data);
         if (this.isUnmounted)
           return
-        }
+        })
         this.setState({
           staticSeats : res.data.seat_data
         })
